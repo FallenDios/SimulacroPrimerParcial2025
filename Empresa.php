@@ -48,14 +48,17 @@ class Empresa {
     }
 
     // Retornar una moto por código
-    public function retornarMoto($codigoMoto) {
-        foreach ($this->motos as $moto) {
-            if ($moto->getCodigo() == $codigoMoto) {
-                return $moto;
-            }
+   public function retornarMoto($codigoMoto) {
+    $i = 0;
+    $encontrada = null;
+    while ($i < count($this->motos) && $encontrada === null) {
+        if ($this->motos[$i]->getCodigo() == $codigoMoto) {
+            $encontrada = $this->motos[$i];
         }
-        return null;
+        $i++;
     }
+    return $encontrada;
+}
 
     // Registrar una venta
     public function registrarVenta($colCodigosMoto, $objCliente) {
